@@ -1,4 +1,4 @@
-FROM fedora:latest
+FROM fedora:23
 
 MAINTAINER Kenneth E. Bellock <ken@bellock.net>
 
@@ -9,7 +9,8 @@ RUN set -x && dnf clean all && dnf -y distro-sync --setopt=deltarpm=0 && dnf -y 
     "perl(JSON::XS)" "perl(Test::Taint)" "perl(HTML::Scrubber)" \
     "perl(Encode::Detect)" "perl(Email::Reply)" "perl(Daemon::Generic)" \
     "perl(mod_perl2)" "perl(Apache2::SizeLimit)" "perl(File::MimeInfo::Magic)" \
-    "perl(IO::Scalar)" "perl(DBD::mysql)" && dnf -y clean all
+    "perl(IO::Scalar)" "perl(DBD::mysql)" "perl(Cache::Memcached)" \
+    "perl(File::Copy::Recursive)" && dnf -y clean all
 
 VOLUME /usr/share/bugzilla
 EXPOSE 80
